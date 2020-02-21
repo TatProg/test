@@ -1,7 +1,16 @@
 package demo.test.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "shops")
 public class Shop {
+    @Id
+    @Column(name = "shopID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int shopId;
+
+    @Column(name = "companyFullName")
     private String name;
 
     public Shop(int shopId, String name) {
@@ -23,5 +32,13 @@ public class Shop {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "shopId=" + shopId +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

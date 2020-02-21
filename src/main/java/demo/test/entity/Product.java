@@ -1,23 +1,24 @@
 package demo.test.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonView;
+
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
-@Table
-@ToString(of = {"id", "text"})
-@EqualsAndHashCode(of = {"id"})
+@Table (name = "products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    //@JsonView(Views.Id.class)
+    @Column(name = "ProductID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "shopID")
     private int shopId;
+    @Column (name = "name")
     private String name;
+    @Column (name = "price")
     private int price;
 
     public Product(int id, int shopId, String name, int price) {
